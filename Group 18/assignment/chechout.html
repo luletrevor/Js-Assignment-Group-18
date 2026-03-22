@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
+<body>
+    <link rel="stylesheet" href="checkout.css">
+    <div class="checkout-layout">
+    <div class="checkout-form-section">
+        <h2>Shipping & Payment</h2>
+        <form id="order-form">
+            <label>Full Name</label>
+            <input type="text" id="cust-name" placeholder="Josh..." required>
+
+            <label>Phone Number</label>
+            <input type="tel" id="cust-phone" placeholder="0700 000 000" required>
+
+            <label>Delivery Address</label>
+            <textarea id="cust-address" placeholder="e.g. Kampala, Wandegeya" required></textarea>
+
+            <label>Payment Method</label>
+            <select id="payment-method">
+                <option value="momo">MTN/Airtel Mobile Money</option>
+                <option value="cash">Cash on Delivery</option>
+            </select>
+
+            <button type="submit" class="place-order-btn">Complete Purchase</button>
+        </form><br>
+        <button onclick="window.location.href='cart.html'" class="back-link">Return to Cart</button><br><br>
+        <a href="home.html">
+    <button type="button">Back to Shop</button>
+</a>
+    </div>
+
+    <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="summary-items">
+            </div>
+        <hr>
+        <h4 id="summary-total">Total: UGX 0</h4>
+    </div>
+</div>
+<script src="checkout.js"></script>
+</body>
+</html>

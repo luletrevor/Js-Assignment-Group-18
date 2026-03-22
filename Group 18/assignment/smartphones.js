@@ -1,0 +1,70 @@
+// 1. Product Array (Compulsory Feature) 
+const products = [
+    { id: 1, name: "iPhone 15", 
+        price: 3500000, 
+        category: "Electronics", 
+        image: "iPhone-15-All-Colors.jpg"
+    },
+    { id: 2, name: "Samsung S24 Ultra", price: 4200000, category: "Electronics",image:"images.jpg" },
+    { id: 3, name: "Google Pixel 9", price: 3100000, category: "Electronics",image:"google-pixel-9-.jpg" },
+    { id: 4, name: "Phone Case - Leather", price: 50000, category: "Accessories",image:"leather phonecase.jpg" },
+    { id: 5, name: "Fast Charger 25W", price: 80000, category: "Accessories",image:"Apple-25W-USB-C-Power-Adapter-USB-C-to-Lightning-Cable.jpg" },
+    { id: 7, name: "Xiaomi Redmi Note 13", price: 1200000, category: "Electronics",image:"redmi.jpg" },
+    {id: 8, name: "USB type C", price: 20000, category: "Accesories",image:"ctocusb.jpg" },
+    {id: 9, name: "18W PD USB C Wall charger", price: 650000, category: "Accesories",image:"download.jpg" },
+    {id: 10, name: "Vivo X300", price: 1200000, category: "Electronics",image:"download (1).jpg" },
+    {id: 11, name: "iPhone 17 Pro", price: 3100000, category: "Electronics",image:"download (2).jpg" },
+    {id: 12, name: " Google Pixel 10 Pro", price: 2100000, category: "Electronics",image:"images (1).jpg" },
+    {id: 13, name: "Samsung z fold 6", price: 1358000, category: "Electronics",image:"samsung z fold 6.jpg" },
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// 2. Function to Display Products (DOM Manipulation) 
+function displayProducts(productsToRender) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = ""; // Clear current display 
+
+    productsToRender.forEach(product => {
+        const card = document.createElement("div"); 
+        card.className = "product-card";
+        
+        card.innerHTML = `
+            
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>UGX ${product.price.toLocaleString()}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        `;
+        
+        container.appendChild(card); 
+    });
+}
+
+// 3. Search Functionality
+document.getElementById("searchBar").addEventListener("input", (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+    displayProducts(filtered);
+});
+
+// 4. Add to Cart with Local Storage 
+function addToCart(productId) {
+    try {
+        const product = products.find(p => p.id === productId);
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart)); 
+        updateCartCounter();
+        alert(`${product.name} added to cart!`);
+    } catch (error) {
+        console.error("Error adding to cart:", error); // Error Handling
+    }
+}
+
+function updateCartCounter() {
+    document.getElementById("cart-link").innerText = `Cart (${cart.length})`; 
+}
+
+// Initial Render
+displayProducts(products);
+updateCartCounter();
