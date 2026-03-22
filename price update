@@ -1,10 +1,14 @@
 // 1. Product Array (Compulsory Feature) 
+//Each product has id, name, price, category, and image fields
 const products = [
-    { id: 1, name: "iPhone 15", 
-        price: 3500000, 
-        category: "Electronics", 
-        image: "iPhone-15-All-Colors.jpg"
-    },
+    {
+       id: 1,
+       name: "iPhone 15",
+       price: 3500000,
+       cartegory: "Electronics",
+       image: "iPhone-15-All-Colors"
+     },
+
     { id: 2, name: "Samsung S24 Ultra", price: 4200000, category: "Electronics",image:"images.jpg" },
     { id: 3, name: "Google Pixel 9", price: 3100000, category: "Electronics",image:"google-pixel-9-.jpg" },
     { id: 4, name: "Phone Case - Leather", price: 50000, category: "Accessories",image:"leather phonecase.jpg" },
@@ -35,6 +39,7 @@ function displayProducts(productsToRender) {
             <h3>${product.name}</h3>
             <p> Price: UGX ${product.price.toLocaleString()}</p>
             <button onclick="addToCart(${product.id})">Add to Cart</button>
+
         `;
         
         container.appendChild(card); 
