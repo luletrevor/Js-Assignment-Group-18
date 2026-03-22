@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Samsung Galaxy A14",
+    "name": "google-pixel-9-",
     "price": 850000,
-    "image": "images/a14.jpg"
+    "image": "images/google-pixel-9-.jpg"
   },
   {
     "id": 2,
-    "name": "iPhone 11",
+    "name": "redmi",
     "price": 1500000,
-    "image": "images/iphone11.jpg"
+    "image": "images/redmi.jpg"
   }
 ]
